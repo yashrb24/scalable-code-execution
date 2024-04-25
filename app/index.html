@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python Code Executor</title>
+</head>
+<body>
+    <h1>Python Code Executor</h1>
+    <form id="code-form">
+        <textarea id="code-input" name="code" rows="10" cols="50">print("Hello, World!")</textarea>
+        <button type="button" onclick="executeCode()">Execute</button>
+    </form>
+    <pre id="output"></pre>
+
+    <script>
+        async function executeCode() {
+            const code = document.getElementById('code-input').value;
+            const formData = new FormData();
+            formData.append('code', code);
+
+            const response = await fetch('/execute', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                document.getElementById('output').textContent = result.output;
+            } else {
+                document.getElementById('output').textContent = 'Error: ' + result.detail;
+            }
+        }
+    </script>
+</body>
+</html>
