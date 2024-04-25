@@ -18,14 +18,6 @@ spec:
         image: yashrb24/webapp
         ports:
         - containerPort: 80
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
         resources:
           limits:
             cpu: 100m
