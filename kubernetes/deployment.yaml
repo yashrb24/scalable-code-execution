@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: devops-toolkit
+  name: webapp
   labels:
-    app: devops-toolkit
+    app: webapp
 spec:
   selector:
     matchLabels:
-      app: devops-toolkit
+      app: webapp
   template:
     metadata:
       labels:
-        app: devops-toolkit
+        app: webapp
     spec:
       containers:
-      - name: devops-toolkit
+      - name: webapp
         image: yashrb24/webapp
         ports:
         - containerPort: 80
