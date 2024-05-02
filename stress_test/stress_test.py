@@ -3,7 +3,7 @@ import streamlit as st
 
 # Function to send query to FastAPI app
 def send_query(code):
-    response = requests.post("http://webapp.svc.cluster.local/execute", data={"code": code})
+    response = requests.post("http://webapp/execute", data={"code": code})
     return response.json()
 
 # Streamlit web interface
