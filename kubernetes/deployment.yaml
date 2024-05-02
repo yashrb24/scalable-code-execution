@@ -5,6 +5,7 @@ metadata:
   labels:
     app: webapp
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: webapp
@@ -18,11 +19,3 @@ spec:
         image: yashrb24/webapp
         ports:
         - containerPort: 80
-        resources:
-          limits:
-            cpu: 100m
-            memory: 256Mi
-          requests:
-            cpu: 80m
-            memory: 128Mi
-
