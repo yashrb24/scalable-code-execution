@@ -32,7 +32,7 @@ def plot(start, end):
     response_query1 = requests.get(url_query1, params=params_query1).json()
 
     # Constructing the URL and parameters for the second query
-    url_query2 = "http://172.18.0.2:9090/api/v1/query_range"
+    url_query2 = "http://stable-kube-prometheus-sta-prometheus.prometheus:9090/api/v1/query_range"
     params_query2 = {
         'query': f'ceil(sum by(container) (rate(container_fs_reads_total{{job="kubelet", metrics_path="/metrics/cadvisor", container!="", namespace="{namespace}", pod="{pod}"}}[1m]) + rate(container_fs_writes_total{{job="kubelet", metrics_path="/metrics/cadvisor", container!="", namespace="{namespace}", pod="{pod}"}}[1m])))',
         'start': start,
@@ -44,7 +44,7 @@ def plot(start, end):
     response_query2 = requests.get(url_query2, params=params_query2).json()
 
     # Constructing the URL and parameters for the third query
-    url_query3 = "http://172.18.0.2:9090/api/v1/query_range"
+    url_query3 = "http://stable-kube-prometheus-sta-prometheus.prometheus:9090/api/v1/query_range"
     params_query3 = {
         'query': f'sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{{namespace="{namespace}", pod="{pod}"}}) by (container)',
         'start': start,
